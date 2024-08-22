@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dadboodr1m4wb"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_35eww"]
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="BTPlayer" type="BTPlayer" parent="."]
+agent_node = NodePath("../CollisionShape2D")
+blackboard_plan = SubResource("BlackboardPlan_35eww")
