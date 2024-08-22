@@ -245,7 +245,6 @@ fit_content = true
 
 [node name="CodePopup" type="PopupPanel" parent="UI Layer/Control"]
 unique_name_in_owner = true
-position = Vector2i(0, 60)
 size = Vector2i(1024, 708)
 visible = true
 
@@ -257,8 +256,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = -4.0
-offset_bottom = -4.0
+offset_right = 1020.0
+offset_bottom = 704.0
 grow_horizontal = 2
 grow_vertical = 2
 gutters_draw_line_numbers = true
