@@ -1,6 +1,8 @@
-[gd_scene load_steps=67 format=3 uid="uid://dadboodr1m4wb"]
+[gd_scene load_steps=69 format=3 uid="uid://dadboodr1m4wb"]
 
 [ext_resource type="Texture2D" uid="uid://ca42x7c412da" path="res://chars/square/base_character.png" id="1_inxba"]
+[ext_resource type="Texture2D" uid="uid://dp2hx2xlvhrdk" path="res://art/box5.png" id="2_diyoh"]
+[ext_resource type="FontFile" uid="uid://c400dxmer34yx" path="res://fonts/Unknown.ttf" id="3_ejgb7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ri1x"]
 atlas = ExtResource("1_inxba")
@@ -427,8 +429,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"frameset",
-"speed": 5.0
+"speed": 12.0
 }]
+
+[sub_resource type="Animation" id="Animation_l67i0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_x4jgf"]
 resource_name = "idle"
@@ -444,23 +461,8 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
+"update": 0,
 "values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_l67i0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x20ll"]
@@ -497,3 +499,21 @@ initial_velocity_min = 50.0
 initial_velocity_max = 150.0
 scale_amount_min = 2.0
 scale_amount_max = 8.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-24, -64)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_diyoh")
+
+[node name="Label" type="Label" parent="Sprite2D"]
+offset_left = -96.0
+offset_top = -48.0
+offset_right = 90.0
+offset_bottom = 32.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ejgb7")
+theme_override_font_sizes/font_size = 32
+text = "Qwerty a:
+asd 5 fgh,
+zx cvbn!"
