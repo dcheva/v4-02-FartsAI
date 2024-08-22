@@ -3,5 +3,5 @@
 - Add LimboAI from AssetsLib to Project Root.
 - Test run showcase.tscn OK
 - Main scene with Tilemap BG 1280x768 (alt+enter fullscreen vewport expand)
-- Add Player's basic structure
+- Add Player's basic structure and idle animation
 
