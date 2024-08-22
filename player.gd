@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 
-var max_speed = 100
-var max_speed_walk = max_speed * 0.8
-var max_speed_run = max_speed * 1.2
+var max_speed = 400
+var max_speed_walk = max_speed * 1
+var max_speed_run = max_speed * 2
 var speed_to: Vector2
 
 
@@ -33,10 +33,12 @@ func get_input(delta: float) -> void:
 	if Input.is_action_pressed("right_arrow"):
 		speed_to += Vector2.RIGHT * max_speed
 	if Input.is_action_pressed("space"):
-		fart()
+		fart(delta)
 	velocity = lerp(velocity, speed_to, delta * 4)
 
 
-func fart() -> void:
+func fart(delta) -> void:
+	$CPUParticles2D.lifetime = delta * 20
 	$CPUParticles2D.one_shot = true
 	$CPUParticles2D.emitting = true
+	$BoxPlayer.play("warning")
