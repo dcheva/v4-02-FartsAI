@@ -6,6 +6,7 @@ func _ready() -> void:
 	$Chatbox.hide()
 	$Warnbox.show()
 	$BoxPlayer.play("warning")
+	$CPUParticles2D.emitting = true
 
 
 func _physics_process(delta: float) -> void:

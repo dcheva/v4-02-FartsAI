@@ -5,3 +5,4 @@
 - Main scene with Tilemap BG 1280x768 (alt+enter fullscreen vewport expand)
 - Add Player's basic structure and idle animation
 - Add CPU Particles PUFF!!! juice
+- Add baloon animations
