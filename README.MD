@@ -6,3 +6,6 @@
 - Add Player's basic structure and idle animation
 - Add CPU Particles PUFF!!! juice
 - Add baloon animations
+- Add Fart sounds for Base character
+- Add simple Fart sound to animation
+- Add Windows Icon to project
