@@ -1,0 +1,37 @@
+[gd_resource type="BehaviorTree" load_steps=11 format=3 uid="uid://daxiw25ah1bgn"]
+
+[ext_resource type="Script" path="res://ai/tasks/choose_random_pos.gd" id="1_a1go0"]
+[ext_resource type="Script" path="res://ai/tasks/move_to_position.gd" id="2_nef1s"]
+[ext_resource type="Script" path="res://ai/tasks/clear_commmands.gd" id="3_geucy"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_ccerk"]
+
+[sub_resource type="BTAction" id="BTAction_5w1i3"]
+script = ExtResource("1_a1go0")
+range_min_in_dir = 100
+range_max_in_dir = 400
+position_var = &"pos"
+direction_var = &"dir"
+
+[sub_resource type="BTAction" id="BTAction_nb4wa"]
+script = ExtResource("2_nef1s")
+position_var = &"pos"
+direction_var = &"dir"
+tolerance = 40
+
+[sub_resource type="BTAction" id="BTAction_h5vq8"]
+script = ExtResource("3_geucy")
+
+[sub_resource type="BTRandomWait" id="BTRandomWait_tg5le"]
+max_duration = 4.0
+
+[sub_resource type="BTSequence" id="BTSequence_5p61v"]
+custom_name = "Random Pos Seq"
+children = [SubResource("BTAction_5w1i3"), SubResource("BTAction_nb4wa"), SubResource("BTAction_h5vq8"), SubResource("BTRandomWait_tg5le")]
+
+[sub_resource type="BTSelector" id="BTSelector_ak8ct"]
+children = [SubResource("BTSequence_5p61v")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_ccerk")
+root_task = SubResource("BTSelector_ak8ct")

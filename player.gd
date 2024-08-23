@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var main: Node2D
 
-var max_speed = 400
+var max_speed = 200
 var max_speed_walk = max_speed * 1
 var max_speed_run = max_speed * 2
 var speed_to: Vector2
@@ -14,22 +14,13 @@ func _ready() -> void:
 	$AnimationPlayer.play("idle")
 	$Chatbox.hide()
 	$Warnbox.hide()
-	main.cp()
 
 
 func _physics_process(delta: float) -> void:
 	get_action(delta)
 	move_and_slide()
-	and_collide(delta)
-
-
-func and_collide(delta: float) -> void:
-	var normal = Vector2.ZERO
-	if get_slide_collision_count() > 0:
-		normal += get_last_slide_collision().get_normal()
-		velocity = - normal.length() * speed_to / delta * 4
-		position = position + normal * delta * 4
-
+	position.x = clamp(position.x, 0, get_viewport_rect().size.x)
+	position.y = clamp(position.y, 0, get_viewport_rect().size.y)
 
 
 func get_action(delta: float) -> void:
@@ -48,7 +39,7 @@ func get_action(delta: float) -> void:
 		speed_to += Vector2.RIGHT
 	if get_command("space"):
 		fart(delta)
-	velocity = lerp(velocity, speed_to.normalized() * max_speed, delta * 4)
+	velocity = lerp(velocity, speed_to.normalized() * max_speed, delta)
 
 
 func get_command(command) -> bool:
