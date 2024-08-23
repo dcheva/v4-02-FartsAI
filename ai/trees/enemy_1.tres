@@ -1,0 +1,17 @@
+[gd_resource type="BehaviorTree" load_steps=5 format=3 uid="uid://daxiw25ah1bgn"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_ccerk"]
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_nyopg"]
+text = "random move"
+
+[sub_resource type="BTSequence" id="BTSequence_mkrcw"]
+custom_name = "Random Move Seq"
+children = [SubResource("BTConsolePrint_nyopg")]
+
+[sub_resource type="BTSelector" id="BTSelector_ak8ct"]
+children = [SubResource("BTSequence_mkrcw")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_ccerk")
+root_task = SubResource("BTSelector_ak8ct")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://b30iaa64qgsn5"]
+[gd_scene load_steps=8 format=4 uid="uid://b30iaa64qgsn5"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_01htp"]
 [ext_resource type="Texture2D" uid="uid://btmi1r2ggcsub" path="res://tiles/_desert_tileset.png" id="1_grvd6"]
 [ext_resource type="PackedScene" uid="uid://dadboodr1m4wb" path="res://player.tscn" id="3_dpv5b"]
+[ext_resource type="FontFile" uid="uid://dwejsd5yhyy4j" path="res://fonts/ShareTechCyr.ttf" id="4_pxrla"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hus0l"]
 texture = ExtResource("1_grvd6")
@@ -510,6 +511,8 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_hus0l")
 
+[sub_resource type="LabelSettings" id="LabelSettings_ht3fh"]
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_01htp")
 
@@ -518,4 +521,32 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAEAAQAAAAAAAEAAAAEAAUAAAAAAAIAAAAEAAY
 tile_set = SubResource("TileSet_w5gwk")
 
 [node name="Player" parent="." instance=ExtResource("3_dpv5b")]
-position = Vector2(640, 384)
+z_index = 500
+position = Vector2(512, 389)
+
+[node name="NPC" parent="." groups=["NPC"] instance=ExtResource("3_dpv5b")]
+position = Vector2(768, 389)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+offset_left = 16.0
+offset_right = 1280.0
+offset_bottom = 752.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_fonts/font = ExtResource("4_pxrla")
+theme_override_font_sizes/font_size = 32
+text = "123 789
+456
+"
+label_settings = SubResource("LabelSettings_ht3fh")
+vertical_alignment = 2
+autowrap_mode = 3

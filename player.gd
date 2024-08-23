@@ -1,22 +1,35 @@
 extends CharacterBody2D
 
+var main: Node2D
 
 var max_speed = 400
 var max_speed_walk = max_speed * 1
 var max_speed_run = max_speed * 2
 var speed_to: Vector2
-@export var commands: Array
+var commands: Array
 
 
 func _ready() -> void:
+	main = get_tree().get_root().get_node("Main")
 	$AnimationPlayer.play("idle")
 	$Chatbox.hide()
 	$Warnbox.hide()
+	main.cp(null)
 
 
 func _physics_process(delta: float) -> void:
 	get_action(delta)
 	move_and_slide()
+	and_collide(delta)
+
+
+func and_collide(delta: float) -> void:
+	var normal = Vector2.ZERO
+	if get_slide_collision_count() > 0:
+		normal += get_last_slide_collision().get_normal()
+		velocity = - normal.length() * speed_to / delta * 4
+		position = position + normal * delta * 4
+
 
 
 func get_action(delta: float) -> void:
