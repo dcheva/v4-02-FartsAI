@@ -14,7 +14,7 @@ func _ready() -> void:
 	$AnimationPlayer.play("idle")
 	$Chatbox.hide()
 	$Warnbox.hide()
-	main.cp(null)
+	main.cp()
 
 
 func _physics_process(delta: float) -> void:

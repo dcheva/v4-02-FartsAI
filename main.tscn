@@ -522,10 +522,10 @@ tile_set = SubResource("TileSet_w5gwk")
 
 [node name="Player" parent="." instance=ExtResource("3_dpv5b")]
 z_index = 500
-position = Vector2(512, 389)
+position = Vector2(512, 384)
 
 [node name="NPC" parent="." groups=["NPC"] instance=ExtResource("3_dpv5b")]
-position = Vector2(768, 389)
+position = Vector2(768, 384)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

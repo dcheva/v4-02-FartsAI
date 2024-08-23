@@ -9,3 +9,4 @@
 - Add Fart sounds for Base character
 - Add simple Fart sound to animation
 - Add Windows Icon to project
+- Fix CharacterBody2d Collision safe_margin=1px, gloating mode and moving_platforms
