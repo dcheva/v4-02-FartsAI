@@ -10,14 +10,15 @@ func _process(delta: float) -> void:
 
 
 
-func _unhandled_input(event):
+func _unhandled_input(event) -> void:
 	if event is InputEventKey:
 		if event.is_action_pressed("alt_enter"):
 			get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (!((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN))  ) else Window.MODE_WINDOWED
 
 
-func cp(text = null):
+func cp(text = null) -> void:
 	if text == null or $Control/Label.text.length() > 1000:
 		$Control/Label.text = ""
-	$Control/Label.text += var_to_str(text) + "\n"
-	print(var_to_str(text))
+	elif text != null:
+		$Control/Label.text += var_to_str(text) + "\n"
+		print(var_to_str(text))
