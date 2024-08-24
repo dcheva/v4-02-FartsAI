@@ -15,3 +15,5 @@ C:\Projects\v4-02-carsAI>git merge -X theirs
 Already up to date.
 
 C:\Projects\v4-02-carsAI>git commit -am "merged theirs" 
+[initial 8ab1d73] merged theirs
+ 1 file changed, 13 insertions(+)

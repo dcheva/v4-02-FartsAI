@@ -13,3 +13,5 @@
 - Continue with https://youtu.be/gAk3xl5fBsM?si=ssjqCplAyqed6iFG&t=1689 ai\tasks\choose_random_pos.gd
 - Tested dancing boxes Removed Bump logic and other trash
 - Add task with name=agent.name check: if "Player": return FRESH
+- Add StartNPC with triggered name agent.name if Player return FRESH than
+- Transform StartNPC to start_with_npc: agent_groups=agent.get_groups agent_groups.find("Player")>-1
