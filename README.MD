@@ -1,5 +1,5 @@
 # Cars AI repo with LimboAI
-## Implement FSM, signals, Behaviour Tree for AI & NPCs
+## Implement Behaviour Tree for NPCs
 - Add LimboAI from AssetsLib to Project Root.
 - Test run showcase.tscn OK
 - Main scene with Tilemap BG 1280x768 (alt+enter fullscreen vewport expand)
