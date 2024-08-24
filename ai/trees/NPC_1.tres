@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=17 format=3 uid="uid://daxiw25ah1bgn"]
+[gd_resource type="BehaviorTree" load_steps=20 format=3 uid="uid://daxiw25ah1bgn"]
 
 [ext_resource type="Script" path="res://ai/tasks/choose_random_pos.gd" id="1_a1go0"]
 [ext_resource type="Script" path="res://ai/tasks/start_with_npc.gd" id="1_lb7el"]
@@ -8,6 +8,9 @@
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_ccerk"]
 
+[sub_resource type="BTAction" id="BTAction_7vkmd"]
+script = ExtResource("1_lb7el")
+
 [sub_resource type="BTAction" id="BTAction_0ji8l"]
 script = ExtResource("5_f8f4l")
 group = &""
@@ -15,7 +18,10 @@ target_var = &"target"
 
 [sub_resource type="BTSequence" id="BTSequence_ehyor"]
 custom_name = "Move To Enemy Seq"
-children = [SubResource("BTAction_0ji8l")]
+children = [SubResource("BTAction_7vkmd"), SubResource("BTAction_0ji8l")]
+
+[sub_resource type="BTProbability" id="BTProbability_q0nqh"]
+children = [SubResource("BTSequence_ehyor")]
 
 [sub_resource type="BTAction" id="BTAction_0ilsq"]
 script = ExtResource("1_lb7el")
@@ -47,8 +53,11 @@ children = [SubResource("BTRandomWait_tg5le")]
 custom_name = "Random Pos Seq"
 children = [SubResource("BTAction_0ilsq"), SubResource("BTAction_5w1i3"), SubResource("BTAction_nb4wa"), SubResource("BTAction_h5vq8"), SubResource("BTSequence_hljrn")]
 
+[sub_resource type="BTProbability" id="BTProbability_2b783"]
+children = [SubResource("BTSequence_5p61v")]
+
 [sub_resource type="BTSelector" id="BTSelector_ak8ct"]
-children = [SubResource("BTSequence_ehyor"), SubResource("BTSequence_5p61v")]
+children = [SubResource("BTProbability_q0nqh"), SubResource("BTProbability_2b783")]
 
 [resource]
 blackboard_plan = SubResource("BlackboardPlan_ccerk")

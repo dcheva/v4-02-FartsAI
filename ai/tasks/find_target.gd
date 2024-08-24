@@ -6,11 +6,12 @@ extends BTAction
 var target
 
 func _tick(_delta: float) -> Status:
+	print("Group name: %s" % group)
 	if group == "Player":
 		target = get_player_node()
 	elif group == "NPC":
 		target = get_npc_node()
-		print("Found!!!: %n" % var_to_str(target))
+		print("Found!!!: %s" % var_to_str(target))
 	blackboard.set_var(target_var, target)
 	
 	return SUCCESS
