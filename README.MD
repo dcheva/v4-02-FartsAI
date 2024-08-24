@@ -12,3 +12,4 @@
 - Fix CharacterBody2d Collision safe_margin=1px, gloating mode and moving_platforms
 - Continue with https://youtu.be/gAk3xl5fBsM?si=ssjqCplAyqed6iFG&t=1689 ai\tasks\choose_random_pos.gd
 - Tested dancing boxes Removed Bump logic and other trash
+- Add task with name=agent.name check: if "Player": return FRESH
