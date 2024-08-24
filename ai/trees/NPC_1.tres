@@ -1,17 +1,24 @@
 [gd_resource type="BehaviorTree" load_steps=17 format=3 uid="uid://daxiw25ah1bgn"]
 
 [ext_resource type="Script" path="res://ai/tasks/choose_random_pos.gd" id="1_a1go0"]
-[ext_resource type="Script" path="res://ai/tasks/start_with_npc.gd" id="1_uvp2s"]
+[ext_resource type="Script" path="res://ai/tasks/start_with_npc.gd" id="1_lb7el"]
 [ext_resource type="Script" path="res://ai/tasks/move_to_position.gd" id="2_nef1s"]
 [ext_resource type="Script" path="res://ai/tasks/clear_commmands.gd" id="3_geucy"]
+[ext_resource type="Script" path="res://ai/tasks/find_target.gd" id="5_f8f4l"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_ccerk"]
 
-[sub_resource type="BTAction" id="BTAction_0ilsq"]
-script = ExtResource("1_uvp2s")
+[sub_resource type="BTAction" id="BTAction_0ji8l"]
+script = ExtResource("5_f8f4l")
+group = &""
+target_var = &"target"
 
-[sub_resource type="BTConsolePrint" id="BTConsolePrint_sn3j4"]
-text = "Random move"
+[sub_resource type="BTSequence" id="BTSequence_ehyor"]
+custom_name = "Move To Enemy Seq"
+children = [SubResource("BTAction_0ji8l")]
+
+[sub_resource type="BTAction" id="BTAction_0ilsq"]
+script = ExtResource("1_lb7el")
 
 [sub_resource type="BTAction" id="BTAction_5w1i3"]
 script = ExtResource("1_a1go0")
@@ -38,17 +45,10 @@ children = [SubResource("BTRandomWait_tg5le")]
 
 [sub_resource type="BTSequence" id="BTSequence_5p61v"]
 custom_name = "Random Pos Seq"
-children = [SubResource("BTAction_0ilsq"), SubResource("BTConsolePrint_sn3j4"), SubResource("BTAction_5w1i3"), SubResource("BTAction_nb4wa"), SubResource("BTAction_h5vq8"), SubResource("BTSequence_hljrn")]
-
-[sub_resource type="BTConsolePrint" id="BTConsolePrint_plarf"]
-text = "Move To Enemy"
-
-[sub_resource type="BTSequence" id="BTSequence_ehyor"]
-custom_name = "Move To Enemy Seq"
-children = [SubResource("BTConsolePrint_plarf")]
+children = [SubResource("BTAction_0ilsq"), SubResource("BTAction_5w1i3"), SubResource("BTAction_nb4wa"), SubResource("BTAction_h5vq8"), SubResource("BTSequence_hljrn")]
 
 [sub_resource type="BTSelector" id="BTSelector_ak8ct"]
-children = [SubResource("BTSequence_5p61v"), SubResource("BTSequence_ehyor")]
+children = [SubResource("BTSequence_ehyor"), SubResource("BTSequence_5p61v")]
 
 [resource]
 blackboard_plan = SubResource("BlackboardPlan_ccerk")

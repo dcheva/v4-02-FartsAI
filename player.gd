@@ -55,3 +55,9 @@ func fart(delta) -> void:
 	$CPUParticles2D.emitting = true
 	$FartPlayer2D.play()
 	$BoxPlayer.play("warning")
+	
+func check_for_self(node: Node) -> bool:
+	if node == self:
+		return true
+	else:
+		return false
