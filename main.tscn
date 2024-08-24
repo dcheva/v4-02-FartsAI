@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=4 uid="uid://b30iaa64qgsn5"]
+[gd_scene load_steps=5 format=4 uid="uid://b30iaa64qgsn5"]
 
 [ext_resource type="Texture2D" uid="uid://btmi1r2ggcsub" path="res://tiles/_desert_tileset.png" id="1_grvd6"]
 [ext_resource type="PackedScene" uid="uid://dadboodr1m4wb" path="res://player.tscn" id="3_dpv5b"]
-[ext_resource type="FontFile" uid="uid://dwejsd5yhyy4j" path="res://fonts/ShareTechCyr.ttf" id="4_pxrla"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hus0l"]
 texture = ExtResource("1_grvd6")
@@ -510,8 +509,6 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_hus0l")
 
-[sub_resource type="LabelSettings" id="LabelSettings_ht3fh"]
-
 [node name="Main" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -522,46 +519,18 @@ tile_set = SubResource("TileSet_w5gwk")
 z_index = 500
 position = Vector2(512, 384)
 
-[node name="NPC" parent="." groups=["NPC"] instance=ExtResource("3_dpv5b")]
+[node name="NPC1" parent="." groups=["NPC"] instance=ExtResource("3_dpv5b")]
 position = Vector2(768, 384)
 
 [node name="NPC2" parent="." groups=["NPC"] instance=ExtResource("3_dpv5b")]
-position = Vector2(720, 432)
+position = Vector2(688, 464)
 
 [node name="NPC3" parent="." groups=["NPC"] instance=ExtResource("3_dpv5b")]
 position = Vector2(688, 293)
 
 [node name="NPC4" parent="." groups=["NPC"] instance=ExtResource("3_dpv5b")]
-position = Vector2(616, 288)
+position = Vector2(584, 296)
 
 [node name="NPC5" parent="." groups=["NPC"] instance=ExtResource("3_dpv5b")]
-position = Vector2(664, 464)
+position = Vector2(584, 469)
 safe_margin = 2.0
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = true
-
-[node name="Label" type="Label" parent="Control"]
-layout_mode = 1
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 1264.0
-offset_bottom = 752.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_constants/line_spacing = -10
-theme_override_fonts/font = ExtResource("4_pxrla")
-theme_override_font_sizes/font_size = 32
-text = "123 789
-456
-"
-label_settings = SubResource("LabelSettings_ht3fh")
-vertical_alignment = 2
-autowrap_mode = 3
-metadata/_edit_lock_ = true

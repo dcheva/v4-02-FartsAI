@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=11 format=3 uid="uid://daxiw25ah1bgn"]
+[gd_resource type="BehaviorTree" load_steps=12 format=3 uid="uid://daxiw25ah1bgn"]
 
 [ext_resource type="Script" path="res://ai/tasks/choose_random_pos.gd" id="1_a1go0"]
 [ext_resource type="Script" path="res://ai/tasks/move_to_position.gd" id="2_nef1s"]
@@ -29,8 +29,11 @@ max_duration = 4.0
 custom_name = "Random Pos Seq"
 children = [SubResource("BTAction_5w1i3"), SubResource("BTAction_nb4wa"), SubResource("BTAction_h5vq8"), SubResource("BTRandomWait_tg5le")]
 
+[sub_resource type="BTSequence" id="BTSequence_hljrn"]
+custom_name = "Idle Sequence"
+
 [sub_resource type="BTSelector" id="BTSelector_ak8ct"]
-children = [SubResource("BTSequence_5p61v")]
+children = [SubResource("BTSequence_5p61v"), SubResource("BTSequence_hljrn")]
 
 [resource]
 blackboard_plan = SubResource("BlackboardPlan_ccerk")
