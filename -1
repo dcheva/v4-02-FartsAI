@@ -1,0 +1,4 @@
+
+C:\Projects\v4-02-carsAI>git add -A 
+
+C:\Projects\v4-02-carsAI>git commit -am "Transform StartNPC to start_with_npc: agent_groups agent.get_groups agent_groups.find("Player")  " 
