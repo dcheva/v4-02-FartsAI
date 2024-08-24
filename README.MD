@@ -15,3 +15,4 @@
 - Add task with name=agent.name check: if "Player": return FRESH
 - Add StartNPC with triggered name agent.name if Player return FRESH than
 - Transform StartNPC to start_with_npc: agent_groups=agent.get_groups agent_groups.find("Player")>-1
+- Tested Working find_target.gd prints found target NPC node
