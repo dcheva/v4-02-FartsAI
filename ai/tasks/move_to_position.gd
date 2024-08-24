@@ -11,7 +11,7 @@ func _tick(_delta: float) -> Status:
 	if !agent.is_in_group("NPC"): return SUCCESS
 	
 	var target_pos: Vector2 = blackboard.get_var(position_var, Vector2.ZERO)
-	var target_dir: Vector2 = blackboard.get_var(direction_var, Vector2.ZERO)
+	var target_dir: Vector2 = blackboard.get_var(direction_var, Vector2.ZERO) # unused
 	var agent_pos: Vector2 = agent.global_position
 	var vector = agent_pos - target_pos
 	
