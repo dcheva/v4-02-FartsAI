@@ -13,7 +13,7 @@ script = ExtResource("1_lb7el")
 
 [sub_resource type="BTAction" id="BTAction_0ji8l"]
 script = ExtResource("5_f8f4l")
-group = &""
+group = &"NPC"
 target_var = &"target"
 
 [sub_resource type="BTSequence" id="BTSequence_ehyor"]
