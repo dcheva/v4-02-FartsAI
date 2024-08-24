@@ -39,7 +39,7 @@ func get_action(delta: float) -> void:
 		speed_to += Vector2.RIGHT
 	if get_command("space"):
 		fart(delta)
-	velocity = lerp(velocity, speed_to.normalized() * max_speed, delta)
+	velocity = lerp(velocity, speed_to.normalized() * max_speed, delta * 4)
 
 
 func get_command(command) -> bool:

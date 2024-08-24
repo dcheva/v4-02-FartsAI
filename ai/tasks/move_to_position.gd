@@ -16,13 +16,13 @@ func _tick(_delta: float) -> Status:
 	var vector = agent_pos - target_pos
 	
 	if  vector.length() > tolerance:
-		if agent_pos.x > target_pos.x:
+		if agent_pos.x > target_pos.x + tolerance:
 			agent_commands.append("left_arrow")
-		else:
+		elif agent_pos.x < target_pos.x - tolerance:
 			agent_commands.append("right_arrow")
-		if agent_pos.y > target_pos.y:
+		if agent_pos.y > target_pos.y + tolerance:
 			agent_commands.append("up_arrow")
-		else:
+		elif agent_pos.y < target_pos.y - tolerance:
 			agent_commands.append("down_arrow")
 		agent.commands = agent_commands
 		
