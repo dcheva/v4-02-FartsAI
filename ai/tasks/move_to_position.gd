@@ -1,8 +1,6 @@
 extends BTAction
 
-
 @export var position_var: StringName = &"pos"
-@export var direction_var: StringName = &"dir"
 @export var tolerance = 40
 
 func _tick(_delta: float) -> Status:
@@ -10,8 +8,6 @@ func _tick(_delta: float) -> Status:
 	var agent_commands: Array
 	if !agent.is_in_group("NPC"): return SUCCESS
 	
-	# unused
-	# var target_dir: Vector2 = blackboard.get_var(direction_var, Vector2.ZERO)
 	var target_pos: Vector2 = blackboard.get_var(position_var, Vector2.ZERO)
 	var agent_pos: Vector2 = agent.global_position
 	var vector = agent_pos - target_pos
@@ -26,7 +22,6 @@ func _tick(_delta: float) -> Status:
 		elif agent_pos.y < target_pos.y - tolerance:
 			agent_commands.append("down_arrow")
 		agent.commands = agent_commands
-		
 		return RUNNING
 	
 	else:

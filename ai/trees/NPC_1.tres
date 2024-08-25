@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=21 format=3 uid="uid://daxiw25ah1bgn"]
+[gd_resource type="BehaviorTree" load_steps=25 format=3 uid="uid://daxiw25ah1bgn"]
 
 [ext_resource type="Script" path="res://ai/tasks/choose_random_pos.gd" id="1_a1go0"]
 [ext_resource type="Script" path="res://ai/tasks/start_with_npc.gd" id="1_lb7el"]
@@ -14,15 +14,33 @@ script = ExtResource("1_lb7el")
 
 [sub_resource type="BTAction" id="BTAction_0ji8l"]
 script = ExtResource("5_f8f4l")
-group = &"NPC"
+groups = Array[StringName]([&"NPC", &"Player"])
 target_var = &"target"
 
 [sub_resource type="BTAction" id="BTAction_bn0qy"]
 script = ExtResource("3_vct6q")
+target_var = &"target"
+position_var = &"pos"
+tolerance = 20
+
+[sub_resource type="BTAction" id="BTAction_u6vw3"]
+script = ExtResource("2_nef1s")
+position_var = &"pos"
+tolerance = 40
+
+[sub_resource type="BTAction" id="BTAction_yq4yp"]
+script = ExtResource("3_geucy")
+
+[sub_resource type="BTRandomWait" id="BTRandomWait_2b6x2"]
+max_duration = 4.0
+
+[sub_resource type="BTSequence" id="BTSequence_qlsoh"]
+custom_name = "Idle Seq"
+children = [SubResource("BTRandomWait_2b6x2")]
 
 [sub_resource type="BTSequence" id="BTSequence_ehyor"]
 custom_name = "Move To Enemy Seq"
-children = [SubResource("BTAction_7vkmd"), SubResource("BTAction_0ji8l"), SubResource("BTAction_bn0qy")]
+children = [SubResource("BTAction_7vkmd"), SubResource("BTAction_0ji8l"), SubResource("BTAction_bn0qy"), SubResource("BTAction_u6vw3"), SubResource("BTAction_yq4yp"), SubResource("BTSequence_qlsoh")]
 
 [sub_resource type="BTProbability" id="BTProbability_q0nqh"]
 children = [SubResource("BTSequence_ehyor")]
@@ -35,12 +53,10 @@ script = ExtResource("1_a1go0")
 range_min_in_dir = 100
 range_max_in_dir = 400
 position_var = &"pos"
-direction_var = &"dir"
 
 [sub_resource type="BTAction" id="BTAction_nb4wa"]
 script = ExtResource("2_nef1s")
 position_var = &"pos"
-direction_var = &"dir"
 tolerance = 40
 
 [sub_resource type="BTAction" id="BTAction_h5vq8"]

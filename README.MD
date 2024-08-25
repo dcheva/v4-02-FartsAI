@@ -18,3 +18,5 @@
 - Transform StartNPC to start_with_npc: agent_groups=agent.get_groups agent_groups.find("Player")>-1
 - Tested Working find_target.gd prints found target NPC node
 - Continue at 1:03:00
+- Extend Move To Enemy Seq to implement MoveToPosition task
+- Change FindTarget with ["NPC", "Player"].pick_random()
