@@ -1,10 +1,10 @@
 [gd_resource type="BehaviorTree" load_steps=25 format=3 uid="uid://daxiw25ah1bgn"]
 
-[ext_resource type="Script" path="res://ai/tasks/choose_random_pos.gd" id="1_a1go0"]
 [ext_resource type="Script" path="res://ai/tasks/start_with_npc.gd" id="1_lb7el"]
 [ext_resource type="Script" path="res://ai/tasks/move_to_position.gd" id="2_nef1s"]
 [ext_resource type="Script" path="res://ai/tasks/clear_commmands.gd" id="3_geucy"]
-[ext_resource type="Script" path="res://ai/tasks/move_to_target.gd" id="3_vct6q"]
+[ext_resource type="Script" path="res://ai/tasks/pos_to_target.gd" id="4_rmpti"]
+[ext_resource type="Script" path="res://ai/tasks/pos_to_random.gd" id="5_6udf0"]
 [ext_resource type="Script" path="res://ai/tasks/find_target.gd" id="5_f8f4l"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_ccerk"]
@@ -17,8 +17,8 @@ script = ExtResource("5_f8f4l")
 groups = Array[StringName]([&"NPC", &"Player"])
 target_var = &"target"
 
-[sub_resource type="BTAction" id="BTAction_bn0qy"]
-script = ExtResource("3_vct6q")
+[sub_resource type="BTAction" id="BTAction_okh0n"]
+script = ExtResource("4_rmpti")
 target_var = &"target"
 position_var = &"pos"
 tolerance = 20
@@ -40,7 +40,7 @@ children = [SubResource("BTRandomWait_2b6x2")]
 
 [sub_resource type="BTSequence" id="BTSequence_ehyor"]
 custom_name = "Move To Enemy Seq"
-children = [SubResource("BTAction_7vkmd"), SubResource("BTAction_0ji8l"), SubResource("BTAction_bn0qy"), SubResource("BTAction_u6vw3"), SubResource("BTAction_yq4yp"), SubResource("BTSequence_qlsoh")]
+children = [SubResource("BTAction_7vkmd"), SubResource("BTAction_0ji8l"), SubResource("BTAction_okh0n"), SubResource("BTAction_u6vw3"), SubResource("BTAction_yq4yp"), SubResource("BTSequence_qlsoh")]
 
 [sub_resource type="BTProbability" id="BTProbability_q0nqh"]
 children = [SubResource("BTSequence_ehyor")]
@@ -48,8 +48,8 @@ children = [SubResource("BTSequence_ehyor")]
 [sub_resource type="BTAction" id="BTAction_0ilsq"]
 script = ExtResource("1_lb7el")
 
-[sub_resource type="BTAction" id="BTAction_5w1i3"]
-script = ExtResource("1_a1go0")
+[sub_resource type="BTAction" id="BTAction_kb86j"]
+script = ExtResource("5_6udf0")
 range_min_in_dir = 100
 range_max_in_dir = 400
 position_var = &"pos"
@@ -71,7 +71,7 @@ children = [SubResource("BTRandomWait_tg5le")]
 
 [sub_resource type="BTSequence" id="BTSequence_5p61v"]
 custom_name = "Random Pos Seq"
-children = [SubResource("BTAction_0ilsq"), SubResource("BTAction_5w1i3"), SubResource("BTAction_nb4wa"), SubResource("BTAction_h5vq8"), SubResource("BTSequence_hljrn")]
+children = [SubResource("BTAction_0ilsq"), SubResource("BTAction_kb86j"), SubResource("BTAction_nb4wa"), SubResource("BTAction_h5vq8"), SubResource("BTSequence_hljrn")]
 
 [sub_resource type="BTSelector" id="BTSelector_ak8ct"]
 children = [SubResource("BTProbability_q0nqh"), SubResource("BTSequence_5p61v")]

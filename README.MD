@@ -20,3 +20,4 @@
 - Continue at 1:03:00
 - Extend Move To Enemy Seq to implement MoveToPosition task
 - Change FindTarget with ["NPC", "Player"].pick_random()
+- Rename tasks
