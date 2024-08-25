@@ -1,5 +1,6 @@
-# Cars AI repo with LimboAI
+# Farts AI repo with LimboAI
 ## Implement Behaviour Tree for NPCs
+### Renamed from v4-02-carsAI
 - Add LimboAI from AssetsLib to Project Root.
 - Test run showcase.tscn OK
 - Main scene with Tilemap BG 1280x768 (alt+enter fullscreen vewport expand)
