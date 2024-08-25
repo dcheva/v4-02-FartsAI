@@ -2,7 +2,7 @@ extends BTAction
 
 @export var target_var := &"target"
 @export var position_var: StringName = &"pos"
-@export var tolerance: int = 20
+@export var tolerance: int = 50
 
 func _tick(_delta: float) -> Status:
 	var target: CharacterBody2D = blackboard.get_var(target_var)

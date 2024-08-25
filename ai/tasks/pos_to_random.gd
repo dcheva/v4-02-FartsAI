@@ -4,7 +4,6 @@ extends BTAction
 @export var range_max_in_dir: int = 400
 
 @export var position_var: StringName = &"pos"
-#@export var direction_var: StringName = &"dir"
 
 func _tick(_delta: float) -> Status:
 	if !agent.is_in_group("NPC"): return SUCCESS
@@ -13,7 +12,6 @@ func _tick(_delta: float) -> Status:
 	var pos: Vector2i = ran_pos(dir)
 	print("Rand to: %s" % Vector2i(pos))
 	blackboard.set_var(position_var, pos)
-	#blackboard.set_var(direction_var, dir)
 	
 	return SUCCESS
 	

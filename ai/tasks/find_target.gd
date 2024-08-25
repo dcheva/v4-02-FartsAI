@@ -3,7 +3,7 @@ extends BTAction
 @export var groups: Array[StringName] = ["NPC", "Player"]
 @export var target_var: StringName = &"target"
 
-var target
+var target: CharacterBody2D
 
 func _tick(_delta: float) -> Status:
 	var group = groups.pick_random()
@@ -16,13 +16,13 @@ func _tick(_delta: float) -> Status:
 	
 	return SUCCESS
 
-func get_player_node():
+func get_player_node() -> Node:
 	var nodes = get_nodes("Player")
 	return nodes.front()
 
 func get_npc_node() -> Node:
 	var nodes = get_nodes("NPC")
-	var npcs: Array[Node]
+	var npcs: Array[CharacterBody2D]
 	if nodes.size() > 1:
 		for node in nodes:
 			if !agent.check_for_self(node):

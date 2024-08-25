@@ -21,3 +21,5 @@
 - Extend Move To Enemy Seq to implement MoveToPosition task
 - Change FindTarget with ["NPC", "Player"].pick_random()
 - Rename tasks
+- Use a Target instance on the Blackboard to implement the Pursuit mechanic.
+- Test and fix pursuit

@@ -21,12 +21,13 @@ target_var = &"target"
 script = ExtResource("4_rmpti")
 target_var = &"target"
 position_var = &"pos"
-tolerance = 20
+tolerance = 50
 
 [sub_resource type="BTAction" id="BTAction_u6vw3"]
 script = ExtResource("2_nef1s")
 position_var = &"pos"
-tolerance = 40
+target_var = &"target"
+tolerance = 50
 
 [sub_resource type="BTAction" id="BTAction_yq4yp"]
 script = ExtResource("3_geucy")
@@ -57,7 +58,8 @@ position_var = &"pos"
 [sub_resource type="BTAction" id="BTAction_nb4wa"]
 script = ExtResource("2_nef1s")
 position_var = &"pos"
-tolerance = 40
+target_var = &"target"
+tolerance = 50
 
 [sub_resource type="BTAction" id="BTAction_h5vq8"]
 script = ExtResource("3_geucy")
