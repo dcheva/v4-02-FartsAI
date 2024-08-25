@@ -2,6 +2,7 @@ extends BTAction
 
 @export var groups: Array[StringName] = ["NPC", "Player"]
 @export var target_var: StringName = &"target"
+@export var is_player: bool = false
 
 var target: CharacterBody2D
 
@@ -9,9 +10,11 @@ func _tick(_delta: float) -> Status:
 	var group = groups.pick_random()
 	if group == "Player":
 		target = get_player_node()
+		is_player = true
 	elif group == "NPC":
 		target = get_npc_node()
 	print("%s :]->[: %s" % [agent.name, target.name])
+	
 	blackboard.set_var(target_var, target)
 	
 	return SUCCESS

@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=29 format=3 uid="uid://daxiw25ah1bgn"]
+[gd_resource type="BehaviorTree" load_steps=41 format=3 uid="uid://daxiw25ah1bgn"]
 
 [ext_resource type="Script" path="res://ai/tasks/start_with_npc.gd" id="1_lb7el"]
 [ext_resource type="Script" path="res://ai/tasks/move_to_position.gd" id="2_nef1s"]
@@ -8,6 +8,11 @@
 [ext_resource type="Script" path="res://ai/tasks/find_target.gd" id="5_f8f4l"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_ccerk"]
+var/is_player/name = &"is_player"
+var/is_player/type = 1
+var/is_player/value = false
+var/is_player/hint = 0
+var/is_player/hint_string = "Hint Target is player or not"
 
 [sub_resource type="BTAction" id="BTAction_7vkmd"]
 script = ExtResource("1_lb7el")
@@ -16,6 +21,7 @@ script = ExtResource("1_lb7el")
 script = ExtResource("5_f8f4l")
 groups = Array[StringName]([&"NPC", &"Player"])
 target_var = &"target"
+is_player = false
 
 [sub_resource type="BTAction" id="BTAction_okh0n"]
 script = ExtResource("4_rmpti")
@@ -31,6 +37,9 @@ tolerance = 50
 
 [sub_resource type="BTAction" id="BTAction_yq4yp"]
 script = ExtResource("3_geucy")
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_y07ee"]
+text = "Chat You"
 
 [sub_resource type="BBNode" id="BBNode_ibwwu"]
 saved_value = NodePath("BoxPlayer")
@@ -51,14 +60,51 @@ animation_player = SubResource("BBNode_mvrex")
 animation_name = &"chat_hide"
 
 [sub_resource type="BTWait" id="BTWait_yj2jc"]
-duration = 2.0
+
+[sub_resource type="BTSequence" id="BTSequence_lvt4l"]
+custom_name = "Chat seq"
+children = [SubResource("BTConsolePrint_y07ee"), SubResource("BTPlayAnimation_rdrp5"), SubResource("BTWait_5143s"), SubResource("BTPlayAnimation_h5wxy"), SubResource("BTWait_yj2jc")]
+
+[sub_resource type="BTProbability" id="BTProbability_7h3cu"]
+children = [SubResource("BTSequence_lvt4l")]
+
+[sub_resource type="BTSequence" id="BTSequence_q6xs8"]
+custom_name = "Chat Prob Seq"
+children = [SubResource("BTProbability_7h3cu")]
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_0io2c"]
+text = "Kill You!!!"
+
+[sub_resource type="BBNode" id="BBNode_lbtf3"]
+saved_value = NodePath("BoxPlayer")
+resource_name = "BoxPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_536qj"]
+animation_player = SubResource("BBNode_lbtf3")
+animation_name = &"warning"
+
+[sub_resource type="BTWait" id="BTWait_hby87"]
+
+[sub_resource type="BTSequence" id="BTSequence_42h8n"]
+custom_name = "Warning seq"
+children = [SubResource("BTConsolePrint_0io2c"), SubResource("BTPlayAnimation_536qj"), SubResource("BTWait_hby87")]
+
+[sub_resource type="BTProbability" id="BTProbability_bjxos"]
+run_chance = 0.2
+children = [SubResource("BTSequence_42h8n")]
+
+[sub_resource type="BTSequence" id="BTSequence_573u2"]
+custom_name = "Warning Prob Seq"
+children = [SubResource("BTProbability_bjxos")]
+
+[sub_resource type="BTRandomSequence" id="BTRandomSequence_kiuva"]
+children = [SubResource("BTSequence_q6xs8"), SubResource("BTSequence_573u2")]
 
 [sub_resource type="BTSequence" id="BTSequence_ehyor"]
 custom_name = "Move To Enemy Seq"
-children = [SubResource("BTAction_7vkmd"), SubResource("BTAction_0ji8l"), SubResource("BTAction_okh0n"), SubResource("BTAction_u6vw3"), SubResource("BTAction_yq4yp"), SubResource("BTPlayAnimation_rdrp5"), SubResource("BTWait_5143s"), SubResource("BTPlayAnimation_h5wxy"), SubResource("BTWait_yj2jc")]
+children = [SubResource("BTAction_7vkmd"), SubResource("BTAction_0ji8l"), SubResource("BTAction_okh0n"), SubResource("BTAction_u6vw3"), SubResource("BTAction_yq4yp"), SubResource("BTRandomSequence_kiuva")]
 
 [sub_resource type="BTProbability" id="BTProbability_q0nqh"]
-run_chance = 0.25
 children = [SubResource("BTSequence_ehyor")]
 
 [sub_resource type="BTAction" id="BTAction_0ilsq"]
