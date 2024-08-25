@@ -19,8 +19,9 @@
 - Tested Working find_target.gd prints found target NPC node
 - Continue at 1:03:00
 - Extend Move To Enemy Seq to implement MoveToPosition task
-- Change FindTarget with ["NPC", "Player"].pick_random()
+- Change FindTarget with \["NPC", "Player"\].pick_random()
 - Rename tasks
 - Use a Target instance on the Blackboard to implement the Pursuit mechanic.
 - Test and fix pursuit
 - Deploy chatting/warning 50/20% scheme ptototype
+#### Add BACKLOG.MD
