@@ -23,3 +23,4 @@
 - Rename tasks
 - Use a Target instance on the Blackboard to implement the Pursuit mechanic.
 - Test and fix pursuit
+- Deploy chatting/warning 50/20% scheme ptototype
