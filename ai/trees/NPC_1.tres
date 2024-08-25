@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=25 format=3 uid="uid://daxiw25ah1bgn"]
+[gd_resource type="BehaviorTree" load_steps=29 format=3 uid="uid://daxiw25ah1bgn"]
 
 [ext_resource type="Script" path="res://ai/tasks/start_with_npc.gd" id="1_lb7el"]
 [ext_resource type="Script" path="res://ai/tasks/move_to_position.gd" id="2_nef1s"]
@@ -32,18 +32,33 @@ tolerance = 50
 [sub_resource type="BTAction" id="BTAction_yq4yp"]
 script = ExtResource("3_geucy")
 
-[sub_resource type="BTRandomWait" id="BTRandomWait_2b6x2"]
-max_duration = 4.0
+[sub_resource type="BBNode" id="BBNode_ibwwu"]
+saved_value = NodePath("BoxPlayer")
+resource_name = "BoxPlayer"
 
-[sub_resource type="BTSequence" id="BTSequence_qlsoh"]
-custom_name = "Idle Seq"
-children = [SubResource("BTRandomWait_2b6x2")]
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_rdrp5"]
+animation_player = SubResource("BBNode_ibwwu")
+animation_name = &"chat_show"
+
+[sub_resource type="BTWait" id="BTWait_5143s"]
+
+[sub_resource type="BBNode" id="BBNode_mvrex"]
+saved_value = NodePath("BoxPlayer")
+resource_name = "BoxPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_h5wxy"]
+animation_player = SubResource("BBNode_mvrex")
+animation_name = &"chat_hide"
+
+[sub_resource type="BTWait" id="BTWait_yj2jc"]
+duration = 2.0
 
 [sub_resource type="BTSequence" id="BTSequence_ehyor"]
 custom_name = "Move To Enemy Seq"
-children = [SubResource("BTAction_7vkmd"), SubResource("BTAction_0ji8l"), SubResource("BTAction_okh0n"), SubResource("BTAction_u6vw3"), SubResource("BTAction_yq4yp"), SubResource("BTSequence_qlsoh")]
+children = [SubResource("BTAction_7vkmd"), SubResource("BTAction_0ji8l"), SubResource("BTAction_okh0n"), SubResource("BTAction_u6vw3"), SubResource("BTAction_yq4yp"), SubResource("BTPlayAnimation_rdrp5"), SubResource("BTWait_5143s"), SubResource("BTPlayAnimation_h5wxy"), SubResource("BTWait_yj2jc")]
 
 [sub_resource type="BTProbability" id="BTProbability_q0nqh"]
+run_chance = 0.25
 children = [SubResource("BTSequence_ehyor")]
 
 [sub_resource type="BTAction" id="BTAction_0ilsq"]
